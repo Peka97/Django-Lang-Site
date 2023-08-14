@@ -23,14 +23,19 @@ def spanish_course(request):
 
 def portfolio(request):
     context = {}
-    return render(request, 'main/about.html', context)
+    return render(request, 'main/portfolio.html', context)
 
 
 def about_project(request):
     context = {}
-    return render(request, 'main/portfolio.html', context)
+    return render(request, 'main/about.html', context)
 
 
 def contacts(request):
     context = {}
     return render(request, 'main/contacts.html', context)
+
+
+def faq(request):
+    context = {}
+    return render(request, 'main/faq.html', context)
