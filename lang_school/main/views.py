@@ -2,8 +2,7 @@ from django.shortcuts import render
 
 
 def index(request):
-    context = {'user': {'is_authed': True}}
-    return render(request, 'main/index.html', context)
+    return render(request, 'main/index.html')
 
 
 def english_course(request):
