@@ -17,6 +17,7 @@
 
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    {% block 'style' %}{% endblock  %}
   </head>
   <body>
     {% include 'main/navbar.html' %}
@@ -24,6 +25,8 @@
     {% block content %}{% endblock  %}
 
     {% include 'main/footer.html' %}
+
+    {% block 'js' %}{% endblock  %}
 
     </body>
 </html>

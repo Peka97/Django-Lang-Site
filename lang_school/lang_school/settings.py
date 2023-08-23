@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # My
     'main',
     'users',
+    'event_calendar',
 ]
 
 MIDDLEWARE = [
@@ -129,6 +130,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
+    '/home/peka97/Django-Lang-Site/lang_school/event_calendar/static'
 ]
 
 # Default primary key field type

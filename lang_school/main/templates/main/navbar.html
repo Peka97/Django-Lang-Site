@@ -14,15 +14,15 @@
               Курсы
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="english">Английский язык</a></li>
-              <li><a class="dropdown-item" href="french">Французский язык</a></li>
-              <li><a class="dropdown-item" href="spanish">Испанский язык</a></li>
+              <li><a class="dropdown-item" href="{% url 'english' %}">Английский язык</a></li>
+              <li><a class="dropdown-item" href="{% url 'french' %}">Французский язык</a></li>
+              <li><a class="dropdown-item" href="{% url 'spanish' %}">Испанский язык</a></li>
             </ul>
           </li>
-          <li><a href="about" class="nav-link px-2 text-white">О проекте</a></li>
-          <li><a href="faq" class="nav-link px-2 text-white">FAQ</a></li>
-          <li><a href="portfolio" class="nav-link px-2 text-white">О себе</a></li>
-          <li><a href="contacts" class="nav-link px-2 text-white">Контакты</a></li>
+          <li><a href="{% url 'about' %}" class="nav-link px-2 text-white">О проекте</a></li>
+          <li><a href="{% url 'faq' %}" class="nav-link px-2 text-white">FAQ</a></li>
+          <li><a href="{% url 'portfolio' %}" class="nav-link px-2 text-white">О себе</a></li>
+          <li><a href="{% url 'contacts' %}" class="nav-link px-2 text-white">Контакты</a></li>
         </ul>
       </div>
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-end">
@@ -38,10 +38,10 @@
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small shadow" style="">
+            <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">New project...</a></li>
             <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
           </ul>
         </div>
@@ -49,7 +49,9 @@
         <a href="{% url 'auth' %}">
           <button type="button" class="btn btn-outline-light me-2">Login</button>
         </a>
-        <button type="button" class="btn btn-warning">Sign-up</button>
+        <a href="sign_in">
+          <button type="button" class="btn btn-warning">Sign-up</button>
+        </a>
         {% endif %}
         </div>
     </div>
