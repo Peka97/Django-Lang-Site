@@ -38,3 +38,8 @@ def contacts(request):
 def faq(request):
     context = {}
     return render(request, 'main/faq.html', context)
+
+
+def test(request):
+    context = {}
+    return render(request, 'main/test.html', context)

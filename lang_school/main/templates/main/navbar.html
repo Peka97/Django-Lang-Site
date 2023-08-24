@@ -30,12 +30,12 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li>
-            <span class='nav-link d-flex text-white px-2 text-decoration-none'>{{ user.username }}</span>
+            <span class='nav-link d-flex text-white px-2 text-decoration-none'>{{ user.last_name }} {{ user.first_name }}</span>
           </li>
         </ul> 
         <div class="flex-shrink-0 dropdown">
           <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            <img src="http://placehold.it/400x500/2c3e50/3498db&text=User photo" alt="User photo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small shadow" style="">
             <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>

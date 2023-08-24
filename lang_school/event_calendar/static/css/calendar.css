@@ -8210,13 +8210,12 @@ h1, h2, h3, h4, h5,
   clear: both; }
 
 .event-card {
-  padding: 20px 0;
+  padding: 0px 0;
   max-width: 100%;
   display: block;
   background: #fff;
   border: none !important;
-  margin: 20px;
-  margin-left: 12px; }
+  margin: 10px;}
   @media (max-width: 991.98px) {
     .event-card {
       margin: 10px; } }
@@ -8226,11 +8225,10 @@ h1, h2, h3, h4, h5,
       background: #e6e6e6; } }
 
 .event-count, .event-name, .event-cancelled {
-  display: inline;
-  padding: 0 10px;
   font-size: 1rem; }
 
 .event-count {
+  margin-left:auto;
   color: #7e0cf5;
   text-align: right; }
 
@@ -8241,6 +8239,10 @@ h1, h2, h3, h4, h5,
 .event-cancelled {
   color: #cd4dcc;
   text-align: right; }
+
+.empty-card {
+  padding: 20px 0;
+}
 
 /*  Calendar wrapper */
 .calendar-container {

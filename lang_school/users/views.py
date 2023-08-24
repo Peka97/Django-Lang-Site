@@ -7,7 +7,8 @@ from django.shortcuts import render
 
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
-from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
 
 from event_calendar.models import EventModel
 
@@ -34,16 +35,33 @@ def user_logout(request):
 
 
 def user_profile(request):
-    lessons = list(EventModel.objects.filter(student=request.user).all())
-    calendar = generate_calendar(lessons)
-    print(len([lesson for lesson in lessons if not lesson.is_active]))
+    user_login = request.user
+    teachers_group = Group.objects.filter(name='Teacher').first()
 
-    context = {'events': lessons,
-               'events_count_done': len([lesson for lesson in lessons if not lesson.is_active]),
-               'events_count_total': len(lessons),
-               'calendar': calendar
-               }
-    return render(request, 'users/profile.html', context)
+    user = User.objects.filter(username=user_login).first()
+    user_is_teacher = user.groups.filter(name='Teacher').exists()
+    if user_is_teacher:
+        lessons = list(EventModel.objects.filter(teacher=user).all())
+        calendar = generate_calendar(lessons)
+
+        context = {
+            'events': lessons,
+            'events_count_done': len([lesson for lesson in lessons if not lesson.is_active]),
+            'events_count_total': len(lessons),
+            'calendar': calendar
+        }
+        return render(request, 'users/teacher_profile.html', context)
+    else:
+        lessons = list(EventModel.objects.filter(student=request.user).all())
+        calendar = generate_calendar(lessons)
+
+        context = {
+            'events': lessons,
+            'events_count_done': len([lesson for lesson in lessons if not lesson.is_active]),
+            'events_count_total': len(lessons),
+            'calendar': calendar
+        }
+        return render(request, 'users/profile.html', context)
 
 
 def generate_calendar(lessons: list[EventModel]):
