@@ -23,54 +23,48 @@
   <!-- Caruosel -->
   {% include 'main/carousel.html' %}
 
-  <!-- Languages -->
+  <!-- Cards -->
+
   <div class="album py-2">
-      <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <div class="col h-100" style='margin-bottom: auto'>
-            <div class="card shadow-sm">
-              <img src="{% static 'main/images/eng.png' %}" class="d-block w-100" alt="Third Slide Image">
-              <div class="card-body">
-                <p class="card-text">{% lorem 25 w random %}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <a href='english'>
-                      <button type="button" class="btn btn-sm btn btn-primary">Подробнее</button>
-                    </a>
-                  </div>
-                  <small class="text-body-secondary">91 ученик</small>
-                </div>
-              </div>
+    <div class='container py-2'>
+      <div class="row row-cols-1row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col-md-4">
+          <div class="card d-flex flex-column h-100">
+            <img src="{% static 'main/images/english.png' %}" class="d-block w-100" alt="Third Slide Image">
+            <div class="card-body d-flex flex-column align-items-center justify-content-center">
+              <h5 class="card-title align-self-start">English courses</h5>
+              <p class="card-text">{% lorem 50 w random %}</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+              <span>95 учеников</span>
+              <button class="btn btn-primary">Подробнее</button>
             </div>
           </div>
-          <div class="col h-100" style='margin-bottom: auto'>
-            <div class="card shadow-sm">
-              <img src="{% static 'main/images/france.png' %}" class="d-block w-100" alt="Third Slide Image">
-              <div class="card-body">
-                <p class="card-text">{% lorem 25 w random %}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn btn-primary">Подробнее</button>
-                  </div>
-                  <small class="text-body-secondary">54 ученика</small>
-                </div>
-              </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card d-flex flex-column h-100">
+            <img src="{% static 'main/images/french.png' %}" class="d-block w-100" alt="Third Slide Image">
+            <div class="card-body d-flex flex-column align-items-center justify-content-center">
+              <h5 class="card-title align-self-start">French courses</h5>
+              <p class="card-text">{% lorem 25 w random %}</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+              <span>66 учеников</span>
+              <button class="btn btn-primary">Подробнее</button>
             </div>
           </div>
-          <div class="col h-100" style='margin-bottom: auto'>
-            <div class="card shadow-sm">
-              <img src="{% static 'main/images/spanish.png' %}" class="d-block w-100" alt="Third Slide Image">
-              <div class="card-body">
-                <p class="card-text">{% lorem 25 w random %}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn btn-primary">Подробнее</button>
-                  </div>
-                  <small class="text-body-secondary">46 учеников</small>
-                </div>
-              </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card d-flex flex-column h-100">
+            <img src="{% static 'main/images/spanish.png' %}" class="d-block w-100" alt="Third Slide Image">
+            <div class="card-body d-flex flex-column align-items-center justify-content-center">
+              <h5 class="card-title align-self-start">Spanish courses</h5>
+              <p class="card-text">{% lorem 25 w random %}</p>
             </div>
-          </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+              <span>30 учеников</span>
+              <button class="btn btn-primary">Подробнее</button>
+            </div>
           </div>
         </div>
       </div>
@@ -119,41 +113,55 @@
   </div> {% endcomment %}
       
   <!-- Reviews -->
-  <div class="container py-4 text-center">
-    <h2 class="featurette-heading pb-3 fw-normal lh-1">Ваши отзывы</h2>
-    <div class="row justify-content-center">
-      <div class="col-lg-4 align-self-center">
-        <img src="http://placehold.it/300x300/2c3e50/3498db&text=Photo" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Third Slide Image">
-        <p>
-          <h2 class="fw-normal">User #1</h2>
-          <small class="text-body-secondary">С нами 3 месяца</small>
-        </p>
-        <hr class='text-success'>
-        <p>{% lorem 20 w random %}</p>
-      </div>
-      <div class="col-lg-4 align-self-center">
-        <img src="http://placehold.it/300x300/2c3e50/3498db&text=Photo" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Third Slide Image">
-        <p>
-          <h2 class="fw-normal">User #2</h2>
-          <small class="text-body-secondary">С нами 3 месяца</small>
-        </p>
-        <hr class='text-success'>
-        <p>{% lorem 20 w random %}</p>
-      </div>
-      <div class="col-lg-4 align-self-center">
-        <img src="http://placehold.it/300x300/2c3e50/3498db&text=Photo" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Third Slide Image">
-        <p>
-          <h2 class="fw-normal">User #3</h2>
-          <small class="text-body-secondary">С нами 3 месяца</small>
-        </p>
-        <hr class='text-success'>
-        <p>{% lorem 20 w random %}</p>
+  <div class="container py-2">
+    <div class='bg-light bg-gradient'>
+      <h2 class="featurette-heading pb-3 fw-normal lh-1 text-center">Ваши отзывы</h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col-md-4">
+          <div class="d-flex flex-column">
+            <div class="d-flex flex-column px-3 h-100 align-items-center justify-content-center">
+              <img src="http://placehold.it/300x300/2c3e50/3498db&text=Photo" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Third Slide Image">
+              <p>
+                <h2 class="fw-normal">User #1</h2>
+                <small class="text-body-secondary">С нами 3 месяца</small>
+              </p>
+              <hr class='w-100'>
+              <p>{% lorem 25 w random %}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex flex-column">
+            <div class="d-flex flex-column h-100 align-items-center justify-content-center">
+              <img src="http://placehold.it/300x300/2c3e50/3498db&text=Photo" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Third Slide Image">
+              <p>
+                <h2 class="fw-normal">User #2</h2>
+                <small class="text-body-secondary">С нами 3 месяца</small>
+              </p>
+              <hr class='w-100'>
+              <p>{% lorem 25 w random %}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex flex-column">
+            <div class="d-flex flex-column px-3 h-100 align-items-center justify-content-center">
+              <img src="http://placehold.it/300x300/2c3e50/3498db&text=Photo" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Third Slide Image">
+              <p>
+                <h2 class="fw-normal">User #3</h2>
+                <small class="text-body-secondary">С нами 3 месяца</small>
+              </p>
+              <hr class='w-100'>
+              <p>{% lorem 50 w random %}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- State -->
-  <div class="container py-4 text-center bg-body-secondary">
+  <div class="container py-4 text-center">
     <h2 class="featurette-heading pb-3 fw-normal lh-1">Штат</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
       <div class="col-lg-4 align-self-center">
