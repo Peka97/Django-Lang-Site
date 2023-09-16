@@ -40,8 +40,6 @@
           <ul class="dropdown-menu text-small shadow" style="">
             <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
             <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
           </ul>
         </div>
@@ -49,7 +47,7 @@
         <a href="{% url 'auth' %}">
           <button type="button" class="btn btn-outline-light me-2">Login</button>
         </a>
-        <a href="sign_in">
+        <a href="{% url 'sign_up' %}">
           <button type="button" class="btn btn-warning">Sign-up</button>
         </a>
         {% endif %}

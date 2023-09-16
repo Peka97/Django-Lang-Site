@@ -1,16 +1,20 @@
 from datetime import datetime
 from calendar import monthrange
+from pprint import pprint
 
 from pytz import timezone
 from typing import Any, Dict
 from django.shortcuts import render
 
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import redirect
 from django.contrib.auth.models import User
-from django.contrib.auth.models import Group
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.contrib.auth.views import PasswordResetView, PasswordResetCompleteView
 
+from exercises_words.models import Exercise
 from event_calendar.models import EventModel
+from users.forms import RegistrationUserForm, CustomPasswordResetForm
 
 
 def user_auth(request):
@@ -29,42 +33,72 @@ def user_auth(request):
     return render(request, 'users/auth.html', context)
 
 
+def user_sign_up(request):
+    if request.method == 'POST':
+        form = RegistrationUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print(form.cleaned_data)
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(request, username=username, password=password)
+            login(request, user)
+            return redirect('')
+
+    context = {'form': RegistrationUserForm()}
+    return render(request, 'users/sign_up.html', context)
+
+
 def user_logout(request):
     logout(request)
     return redirect('')
 
 
+@login_required
 def user_profile(request):
+    if request.method == 'POST':
+        print(request.POST)
     user_login = request.user
-    teachers_group = Group.objects.filter(name='Teacher').first()
 
     user = User.objects.filter(username=user_login).first()
     user_is_teacher = user.groups.filter(name='Teacher').exists()
     if user_is_teacher:
-        lessons = list(EventModel.objects.filter(teacher=user).all())
-        calendar = generate_calendar(lessons)
+        lessons = get_teacher_lessons(user)
+        calendar = get_calendar(lessons)
 
         context = {
             'events': lessons,
-            'events_count_done': len([lesson for lesson in lessons if not lesson.is_active]),
             'events_count_total': len(lessons),
             'calendar': calendar
         }
         return render(request, 'users/teacher_profile.html', context)
     else:
-        lessons = list(EventModel.objects.filter(student=request.user).all())
-        calendar = generate_calendar(lessons)
+        exercises_from_db = list(Exercise.objects.filter(
+            student=user_login
+        ).all())
+        exercises = []
+        for ex in exercises_from_db:
+            if ex.id not in exercises:
+                exercises.append(ex.id)
+
+        print(exercises)
+
+        lessons = list(EventModel.objects.filter(
+            student=user_login).order_by('datetime').all()
+        )
+        calendar = get_calendar(lessons)
 
         context = {
+            'exercises': exercises,
             'events': lessons,
-            'events_count_done': len([lesson for lesson in lessons if not lesson.is_active]),
+            'events_count_done': len([lesson for lesson in lessons if lesson.status == 'D']),
             'events_count_total': len(lessons),
             'calendar': calendar
         }
         return render(request, 'users/profile.html', context)
 
 
-def generate_calendar(lessons: list[EventModel]):
+def get_calendar(lessons: list[dict]):
     tzname = 'Europe/Moscow'
     current_cell = 0
     day_idx = 0
@@ -98,9 +132,12 @@ def generate_calendar(lessons: list[EventModel]):
             class_name += ' active-date'
 
         for lesson in lessons:
-
-            if lesson.time.day == current_day:
-                class_name += ' event-date'
+            if isinstance(lesson, dict):
+                if lesson['datetime'].day == current_day:
+                    class_name += ' event-date'
+            else:
+                if lesson.datetime.day == current_day:
+                    class_name += ' event-date'
 
         result += f'<td class="{class_name}">{current_day}</td>'
 
@@ -108,3 +145,56 @@ def generate_calendar(lessons: list[EventModel]):
         day_idx += 1
 
     return result
+
+
+def get_teacher_lessons(user):
+    lessons = []
+    lesson_template = {
+        'pk': 0,
+        'type': 'personal',  # personal / group,
+        'title': 'English',  # English / French / Spanish
+        'datetime': None,
+        'lessons': EventModel  # EventModel / list[EventModel]
+    }
+
+    events_filter = EventModel.objects.filter(teacher=user).all()
+    events = [
+        EventModel.objects.get(pk=event.pk)
+        for event in events_filter
+    ]
+
+    for event in events:
+        events_datetime = [lesson['datetime'] for lesson in lessons]
+
+        if event.datetime in events_datetime:
+            event_idx = events_datetime.index(event.datetime)
+            lesson_info = lessons[event_idx]
+            lesson_info['type'] = 'group'
+            if isinstance(lesson_info['lessons'], list):
+                lesson_info['lessons'].append(event)
+            else:
+                lesson_info['lessons'] = [
+                    lesson_info['lessons'], event
+                ]
+        else:
+            lesson_info = lesson_template.copy()
+            lesson_info['pk'] = event.pk
+            lesson_info['title'] = event.title
+            lesson_info['datetime'] = event.datetime
+            lesson_info['lessons'] = event
+            lessons.append(lesson_info)
+
+    lessons.sort(key=lambda x: x['datetime'])
+    return lessons
+
+
+class CustomPasswordResetView(PasswordResetView):
+    form_class = CustomPasswordResetForm
+    template_name = 'users/password_reset_form.html'
+    success_url = '/'
+
+
+class CustomPasswordResetCompleteView(PasswordResetCompleteView):
+    form_class = PasswordResetCompleteView
+    template_name = 'users/password_reset_form.html'
+    success_url = '/'

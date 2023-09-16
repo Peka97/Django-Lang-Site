@@ -36,9 +36,9 @@ function init_calendar(date) {
     var empty_card = document.getElementsByName('empty-card')[0];
     empty_card.classList.add('hidden');
     var cards = Array.from(document.getElementsByClassName(`event-card`));
-    console.dir(cards)
     var event_days = Array()
     var re = /^\d{1,2}.\d{1,2}.\d{2,4}$/
+    var cards_warn = get_card_warn()
 
     cards.forEach( (card) => {
         card.classList.add('hidden')
@@ -47,11 +47,8 @@ function init_calendar(date) {
         if (re.exec(name)) {
             event_days.push(name)
         }
-        
     }
     );
-
-    console.log(event_days)
 
     // 35+firstDay is the number of date elements to be added to the dates table
     // 35 is from (7 days in a week) * (up to 5 rows of dates in a month)
@@ -78,17 +75,46 @@ function init_calendar(date) {
                 show_events(day, month + 1, year);
             }
             // If this date has any events, style it with .event-date
-            if(event_days.includes(full_day)) {
+            if(event_days.includes(full_day) && cards_warn.includes(full_day)) {
+                curr_date.addClass("event-date-warn");
+            }
+            if (event_days.includes(full_day)) {
                 curr_date.addClass("event-date");
             }
+            
             // Set onClick handler for clicking a date
             curr_date.click({events: events, day: day, month: month + 1, year: year}, date_click);
             row.append(curr_date);
         }
     }
+    
+    
     // Append the last row and set the current year
     calendar_days.append(row);
     $(".year").text(year);
+}
+
+function get_card_warn () {
+    let result = Array()
+    let tags_without_warn_class = Array()
+    let dang_tags = Array.from(document.getElementsByClassName('bi text-danger'))
+    let warn_tags = Array.from(document.getElementsByClassName('bi text-warning'))
+
+    dang_tags.forEach( (tag) => {
+        tags_without_warn_class.push(tag)
+    })
+    warn_tags.forEach( (tag) => {
+        tags_without_warn_class.push(tag)
+    })
+    
+    tags_without_warn_class.forEach( (tag) => {
+        let card = tag.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
+        console.dir(card)
+        let card_date = card.attributes.name.value
+        result.push(card_date)
+    }
+    )
+    return result
 }
 
 // Get the number of days in a given month/year
@@ -108,7 +134,6 @@ function date_click(event) {
     var empty_card = document.getElementsByName('empty-card')[0];
     var cards = Array.from(document.getElementsByClassName(`event-card`));
     for (let card in cards.values()) {
-        console.log(card)
         card.classList.add('hidden');
     };
     empty_card.classList.add('hidden');
@@ -204,7 +229,6 @@ function new_event_json(name, count, date, day) {
 
 // Display all events of the selected date in card views
 function show_events(day, month, year) {
-    console.log(`ДАТА: ${day}.${month}.${year}`);
     var cards = document.getElementsByName(`${day}.${month}.${year}`);
     var empty_card = document.getElementsByName('empty-card')[0];
 
@@ -213,25 +237,14 @@ function show_events(day, month, year) {
     $(".events-container").show(250);
     // If there are no events for this date, notify the user
     if(cards.length != 0) {
-        console.log('НАШЕЛ ЗАНЯТИЯ');
-
         empty_card.classList.add('hidden');
         cards.forEach( (card) => {
-            console.log(`КАРТА ${card}`);
             card.classList.remove('hidden');
         }
         )
-
-        // for (var card in cards) {
-        //     console.log(`КАРТА ${card}`);
-        //     card.classList.remove('hidden');
-        // }
-
     }
     else {
-        console.log('ЗАНЯТИЙ НЕ НАЙДЕНО. ЗАКРЫВАШКА');
         cards.forEach( (card) => {
-            console.log(`КАРТА ${card}`);
             card.classList.add('hidden');
         }
         )

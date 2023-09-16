@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    # 'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -47,7 +48,10 @@ INSTALLED_APPS = [
     'main',
     'users',
     'event_calendar',
+    'exercises_words',
 ]
+
+# SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,7 +134,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    '/home/peka97/Django-Lang-Site/lang_school/event_calendar/static'
 ]
 
 # Default primary key field type
@@ -140,3 +143,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+
+# SMTP Config
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+# EMAIL_USER_TLS = True
+EMAIL_USE_SSL = True
+EMAIL_TIMEOUT = 15
+EMAIL_HOST_USER = config.email_login
+EMAIL_HOST_PASSWORD = config.email_password

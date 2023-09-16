@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include('main.urls')),
     path('users/', include('users.urls')),
     path('calendar/', include('event_calendar.urls')),
+    path('exercises/', include('exercises_words.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

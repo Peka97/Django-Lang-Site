@@ -1,52 +1,43 @@
-from datetime import datetime
-from calendar import monthrange
-from pytz import timezone
+import requests
+from django.core.mail import send_mail
+import smtplib as smtp
+
+from config import DevConfig
 
 
-def generate_calendar(lessons: list):
-    tzname = 'Europe/Moscow'
-    current_cell = 0
-    day_idx = 0
+login = DevConfig.email_login
+password = DevConfig.email_password
 
-    result = '<tr class="table-row"></tr>'
-    today = datetime.now(timezone(tzname))
-    weekday_start_month = datetime(today.year, today.month, 1).weekday()
-    days = monthrange(today.year, today.month)
+# server = smtp.SMTP('smtp.gmail.com', 587)
+# server.starttls()
+# server.login(login, password)
 
-    result += '<tr class="table-row"></tr>'
+# subject = 'Theme'
+# text = 'Some text'
 
-    for _ in range(weekday_start_month):
-        result += '<td class="table-date nil"></td>'
-        current_cell += 1
-
-    while True:
-        if current_cell == 7:
-            current_cell = 0
-            result += '</tr><tr class="table-row">'
-        try:
-            current_day = days[day_idx]
-        except IndexError:
-            result += '</tr>'
-            break
-        class_name = 'table-date'
-
-        if current_day == today.day:
-            class_name += ' active-date'
-
-        for lesson in lessons:
-            lesson_day = datetime.strptime(
-                lesson.time, 'YYYY-MM-DD HH:MM'
-            ).day()
-
-            if lesson_day == current_day:
-                class_name += ' event day'
-
-        result += f'<td class="{class_name}">{current_day}</td>'
-
-        current_cell += 1
-
-    return result
+# err = server.sendmail(login, 'vk-vk.karasev@yandex.ru',
+#                       f'Subject:{subject}\n<h1>{text}</h1>')
+# print(err)
 
 
-if __name__ == '__main__':
-    generate_calendar([])
+YANDEX_TOKEN = 'y0_AgAAAAAJwHvOAATuwQAAAADsrZyadEkUpG9VQQuphjHUvondjmmAxS4'
+
+headers = {
+    'content-type': 'application/x-www-form-urlencoded',
+    'X-RapidAPI-Key': '396c0f4941msh224f7e17edcff9cp137bb6jsn1828d9c4e574',
+    'X-RapidAPI-Host': 'text-translator2.p.rapidapi.com'
+}
+data = {
+    'source_language': 'en',
+    'target_language': 'ru',
+    'text': 'What is your name?',
+}
+
+response = requests.post(
+    'https://text-translator2.p.rapidapi.com/translate',
+    data,
+    headers=headers
+)
+
+print(response)
+print(response.json())

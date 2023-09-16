@@ -8430,6 +8430,21 @@ h1, h2, h3, h4, h5,
     content: '';
     background: #28a745; }
 
+.event-date-warn {
+  border-color: #7e0cf5;
+  background: #7e0cf5;
+  color: #fff;
+}.event-date-warn:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  content: '';
+  background: #fd7e14;
+}
+
 .active-date {
   background: #cd4dcc;
   color: #fff; }
