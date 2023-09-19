@@ -14,7 +14,6 @@ function prev_paginator_handler(event) {
         pages[new_page - 1].classList.add('watched');
         alertsHide();
         update_paginator_by_number(new_page);
-        checkAllPagesWatched();
     }
 }
 
@@ -33,7 +32,6 @@ function next_paginator_handler(event) {
         pages[new_page - 1].classList.add('watched');
         alertsHide();
         update_paginator_by_number(new_page);
-        checkAllPagesWatched();
     }   
 }
 
@@ -86,19 +84,6 @@ function paginator_handler(event) {
     alertsHide();
 }
 
-function checkAllPagesWatched() {
-    result = true;
-    pages.forEach(el => {
-        if (Array.from(el.classList).includes('watched') == false) {
-            result = false;
-        }
-    })
-
-    if (result == true) {
-        send_btn.classList.remove('hidden')
-    }
-}
-
 function checkAnswer() {
     let curr_page = Number(Array.from(document.getElementsByClassName('page-item active'))[0].id.split('_')[1]);
     let word = document.getElementById(`word_check_${curr_page}`);
@@ -107,10 +92,19 @@ function checkAnswer() {
     if (user_input == translate) {
         alert_success.classList.remove('hidden');
         alert_danger.classList.add('hidden');
+        check_words[word.id] = true;
     }
     else {
         alert_success.classList.add('hidden');
         alert_danger.classList.remove('hidden');
+    }
+    let check = check_all_words_true();
+    console.dir(check)
+    if (check) {
+        done_btn.classList.remove('hidden')
+        document.getElementById('step_4').classList.remove('bg-warning', 'active');
+        document.getElementById('step_4').classList.add('bg-success');
+        document.getElementById('alert-done').classList.remove('hidden');
     }
 }
 
@@ -119,12 +113,19 @@ function alertsHide() {
     alert_success.classList.add('hidden');
 }
 
-function showExit() {
-    document.getElementById('step_4').classList.remove('bg-warning', 'active');
-    document.getElementById('step_4').classList.add('bg-success');
-    document.getElementById('alert-done').classList.remove('hidden');
-    send_btn.classList.add('hidden');
-    done_btn.classList.remove('hidden')
+function fill_check_words() {
+    words.forEach(el => {
+        check_words[el.id] = false;
+    })   
+}
+
+function check_all_words_true() {
+    for (key in check_words) {
+        if (check_words[key] != true) {
+            return false;
+        }
+    }
+    return true;
 }
 
 document.getElementById('page_1').classList.add('active', 'watched');
@@ -137,7 +138,7 @@ let pages = Array.from(paginator[0].children).slice(1, -1);
 let max_page = Number(Array.from(paginator[0].children).slice(-2)[0].id.split('_')[1]);
 let alert_success = document.getElementById('alert-success');
 let alert_danger = document.getElementById('alert-danger');
-
+let check_words = {}
 
 document.getElementById('btn-check').onclick = (event) => {
     checkAnswer();
@@ -155,11 +156,11 @@ document.getElementById('page_1').classList.add('active', 'watched');
 document.getElementById('step_1').classList.add('bg-success', 'text-light');
 document.getElementById('step_2').classList.add('bg-success', 'text-light');
 document.getElementById('step_3').classList.add('bg-success', 'text-light');
+fill_check_words();
 
-const send_btn = document.getElementById('send-btn')
 const done_btn = document.getElementById('done-btn')
 
-send_btn.onclick = (event) => {
+done_btn.onclick = (event) => {
     let token = document.getElementsByName('csrfmiddlewaretoken')[0].defaultValue
     let url = 'http://127.0.0.1:8000/exercises/update'
     let ex_id = window.location.href.split('/').slice(-2, -1)[0]
@@ -179,8 +180,9 @@ send_btn.onclick = (event) => {
             })
         }
     ).then(response => {
-        if (response.status == 200) {
-            showExit();
+        if (response.status != 200) {
+            console.log('Не удалось отправить данные');
+            event.preventDefault();
         }
     })
 }

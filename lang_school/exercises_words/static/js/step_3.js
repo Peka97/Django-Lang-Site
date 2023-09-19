@@ -3,6 +3,7 @@ document.getElementById('step_2').classList.add('bg-success', 'text-light')
 const alert_success = document.getElementById('alert-success')
 const alert_danger = document.getElementById('alert-danger')
 const words = Array(5)
+const next_step = document.getElementById('step_4')
 
 const tasksListElement = document.querySelector(`.translate__list`);
 const taskElements = tasksListElement.querySelectorAll(`.translate__item`);
@@ -74,19 +75,19 @@ function checkAnswer() {
     if (result) {
         alert_danger.classList.add('hidden')
         alert_success.classList.remove('hidden')
-        btn_send.classList.remove('hidden')
+        document.getElementById('step_3').classList.remove('bg-warning', 'active')
+        document.getElementById('step_3').classList.add('bg-success')
+        document.getElementById('step_4').classList.remove('disabled')
+        document.getElementById('step_4').classList.add('bg-warning', 'bg-gradient', 'active', 'fw-bold')
+        document.getElementById('main-alert').classList.remove('hidden')
     }
     else {
         alert_danger.classList.remove('hidden')
         alert_success.classList.add('hidden')
-        btn_send.classList.remove('hidden')
     }
-    
 }
 
-const btn_send = document.getElementById('btn-send')
-
-btn_send.onclick = (event) => {
+next_step.onclick = (event) => {
     let token = document.getElementsByName('csrfmiddlewaretoken')[0].defaultValue
     // let url = window.location.href
     let url = 'http://127.0.0.1:8000/exercises/update'
@@ -108,12 +109,9 @@ btn_send.onclick = (event) => {
         }
     ).then(response => {
         console.dir(response.status)
-        if (response.status == 200) {
-            document.getElementById('step_3').classList.remove('bg-warning', 'active')
-            document.getElementById('step_3').classList.add('bg-success')
-            document.getElementById('step_4').classList.remove('disabled')
-            document.getElementById('step_4').classList.add('bg-warning', 'bg-gradient', 'active', 'fw-bold')
-            document.getElementById('main-alert').classList.remove('hidden')
+        if (response.status != 200) {
+          console.log('Не удалось отправить данные');
+          event.preventDefault();
         }
     })
 }

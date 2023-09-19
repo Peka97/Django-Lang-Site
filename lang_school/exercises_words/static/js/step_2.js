@@ -113,7 +113,11 @@ function checkAllPagesWatched() {
     })
 
     if (result == true) {
-        btn_send.classList.remove('hidden')
+        document.getElementById('step_2').classList.remove('bg-warning', 'active')
+        document.getElementById('step_2').classList.add('bg-success')
+        document.getElementById('step_3').classList.remove('disabled')
+        document.getElementById('step_3').classList.add('bg-warning', 'bg-gradient', 'active', 'fw-bold')
+        document.getElementById('main-alert').classList.remove('hidden')
     }
 }
 
@@ -125,12 +129,13 @@ function alertsHide() {
 /* Vars */
 let words = Array.from(document.getElementsByClassName('word'))
 let paginator = Array.from(document.getElementsByClassName('pagination'))
-let prev_btn = document.getElementById('prev_btn')
-let next_btn = document.getElementById('next_btn')
 let pages = Array.from(paginator[0].children).slice(1, -1)
 let max_page = Number(Array.from(paginator[0].children).slice(-2)[0].id.split('_')[1])
-let alert_success = document.getElementById('alert-success');
-let alert_danger = document.getElementById('alert-danger');
+const prev_btn = document.getElementById('prev_btn')
+const next_btn = document.getElementById('next_btn')
+const alert_success = document.getElementById('alert-success');
+const alert_danger = document.getElementById('alert-danger');
+const next_step = document.getElementById('step_3')
 
 /* Handlers */
 prev_btn.onclick = (event) => {
@@ -150,11 +155,9 @@ next_btn.onclick = (event) => {
     nextPaginatorHandler(event);
     wordCheckHandlers();
 }
-const btn_send = document.getElementById('btn-send')
 
-btn_send.onclick = (event) => {
+next_step.onclick = (event) => {
     let token = document.getElementsByName('csrfmiddlewaretoken')[0].defaultValue
-    // let url = window.location.href
     let url = 'http://127.0.0.1:8000/exercises/update'
     let ex_id = window.location.href.split('/').slice(-2, -1)[0]
     let step = window.location.href.split('/').slice(-1)[0]
@@ -174,12 +177,9 @@ btn_send.onclick = (event) => {
         }
     ).then(response => {
         console.dir(response.status)
-        if (response.status == 200) {
-            document.getElementById('step_2').classList.remove('bg-warning', 'active')
-            document.getElementById('step_2').classList.add('bg-success')
-            document.getElementById('step_3').classList.remove('disabled')
-            document.getElementById('step_3').classList.add('bg-warning', 'bg-gradient', 'active', 'fw-bold')
-            document.getElementById('main-alert').classList.remove('hidden')
+        if (response.status != 200) {
+            console.log('Ошибка отправки данных на сервер');
+            event.preventDefault();
         }
     })
 }
