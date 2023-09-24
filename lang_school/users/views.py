@@ -34,18 +34,20 @@ def user_auth(request):
 
 
 def user_sign_up(request):
+    if request.method == 'GET':
+        form = RegistrationUserForm()
+
     if request.method == 'POST':
         form = RegistrationUserForm(request.POST)
         if form.is_valid():
             form.save()
-            print(form.cleaned_data)
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             user = authenticate(request, username=username, password=password)
             login(request, user)
             return redirect('')
 
-    context = {'form': RegistrationUserForm()}
+    context = {'form': form}
     return render(request, 'users/sign_up.html', context)
 
 
@@ -80,8 +82,6 @@ def user_profile(request):
         for ex in exercises_from_db:
             if ex.id not in exercises:
                 exercises.append(ex.id)
-
-        print(exercises)
 
         lessons = list(EventModel.objects.filter(
             student=user_login).order_by('datetime').all()

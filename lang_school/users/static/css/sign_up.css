@@ -42,3 +42,16 @@ body {
 .btn:hover {
     background-color: var(--color-brown-pale);
 }
+
+label, span.helptext {
+    color: white;
+}
+
+ul.errorlist {
+    font-weight: bold;
+    padding: 15px 10px 15px 10px;
+    list-style-type: none;
+    color: black;
+    background-color: var(--color-brown-paler);
+    border: red solid 3px;
+}

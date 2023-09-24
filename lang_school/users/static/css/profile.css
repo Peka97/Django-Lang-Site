@@ -1,0 +1,78 @@
+:root {
+    --color-white-warm: #EDE2D1;
+
+    --color-brown: #A25E1B;
+    --color-brown-pale: #D08F4E;
+    --color-brown-paler: #D1A071;
+    --color-creme: #eec8a5;
+    --color-brown-dark: #693909;
+    --color-brown-darker: #371805;
+}
+
+/* body {
+    background-color: white;
+} */
+
+div.page {
+    background-color: var(--color-white-warm);
+}
+
+
+li.profile-nav-item {
+    background-color: var(--color-brown);
+    color: white;
+    border-color: var(--color-brown-darker);
+}
+
+.nav-tabs .nav-link.active {
+    color: white;
+    background-color: var(--color-brown-darker);
+    border-color: var(--color-brown);
+}
+
+.nav-tabs:hover .nav-link.active:hover {
+    color: white;
+    background-color: var(--color-brown-darker);
+    border-color: none;
+}
+
+.nav-tabs:hover .nav-link.disabled-nav-item:hover {
+    background-color: var(--color-brown);
+    color: white;
+    border-color: var(--color-brown-darker);
+}
+
+.nav-tabs:hover .nav-link:hover {
+    background-color: var(--color-brown-pale);
+    color: black;
+    border-color: var(--color-brown-darker);
+}
+
+li.profile-nav-item:hover {
+    background-color: var(--color-brown-pale);
+    color: black;
+    border-color: var(--color-brown-darker);
+}
+
+h4.notification-title {
+    color: white;
+}
+
+div.notifications {
+    background-color: var(--color-brown-dark);
+}
+
+div.notification {
+    background-color: var(--color-brown-pale);
+    color: var(--color-brown-darker)
+}
+
+a.ex_name {
+    color: var(--color-brown-darker);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a.ex_name:hover {
+    color: var(--color-white-warm);
+}

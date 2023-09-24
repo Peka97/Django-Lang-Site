@@ -21,15 +21,23 @@ class RegistrationUserForm(UserCreationForm):
         ),
         label='Фамилия'
     )
+    email = forms.CharField(
+        max_length=50,
+        widget=forms.TextInput(
+            {'class': 'form-control'}
+        ),
+        label='Адрес электронной почты'
+    )
 
     class Meta:
         model = User
         fields = (
             'username',
+            'password1',
+            'password2',
             'first_name',
             'last_name',
-            'password1',
-            'password2'
+            'email'
         )
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
@@ -38,6 +46,7 @@ class RegistrationUserForm(UserCreationForm):
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
+        self.fields['email'].widget.attrs['class'] = 'form-control'
 
 
 class CustomPasswordResetForm(PasswordResetForm):
