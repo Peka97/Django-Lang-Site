@@ -20,26 +20,26 @@
     <div class="row">
       <div class="col-12">
         <ul class="nav nav-tabs nav-fill">
-          <li class="nav-item">
-            <a id='step_1' class="nav-link {% if step == 1 %}active bg-warning bg-gradient fw-bold {% endif %} disabled" aria-disabled="true">
+          <li class="nav-item p-2">
+            <a id='step_1' class="nav-link {% if step == 1 %}active step-active {% elif step > 1 %} step-complete {% else %} step-future {% endif %} disabled" aria-disabled="true">
               {% if step == 1 %}
                 > Step 1 <
               {% else %}
-                Step 1
+                Step 1 ✔
               {% endif %}
             </a>
           </li>
-          <li class="nav-item">
-            <a id='step_2' class="nav-link {% if step == 2 %}active bg-warning bg-gradient fw-bold{% endif %} disabled" href={% url "exercises_words" id=id step=2 %} aria-disabled="true">
+          <li class="nav-item p-2">
+            <a id='step_2' class="nav-link {% if step == 2 %}active step-active{% else %}step-future{% endif %} disabled" href={% url "exercises_words" id=id step=2 %} aria-disabled="true">
               {% if step == 2 %}
-                > Step 2 <
+              → Step 2 ←
               {% else %}
                 Step 2
               {% endif %}
             </a>
           </li>
-          <li class="nav-item">
-            <a id='step_3' class="nav-link {% if step == 3 %}active bg-warning bg-gradient fw-bold{% endif %} disabled" href={% url "exercises_words" id=id step=3 %} aria-disabled="true">
+          <li class="nav-item p-2">
+            <a id='step_3' class="nav-link {% if step == 3 %}active step-active{% else %}step-future{% endif %} disabled" href={% url "exercises_words" id=id step=3 %} aria-disabled="true">
               {% if step == 3 %}
                 > Step 3 <
               {% else %}
@@ -47,8 +47,8 @@
               {% endif %}
             </a>
           </li>
-          <li class="nav-item">
-            <a id='step_4' class="nav-link {% if step == 4 %}active bg-warning bg-gradient fw-bold{% endif %} disabled" href={% url "exercises_words" id=id step=4 %} aria-disabled="true">
+          <li class="nav-item p-2">
+            <a id='step_4' class="nav-link {% if step == 4 %}active step-active{% else %}step-future{% endif %} disabled" href={% url "exercises_words" id=id step=4 %} aria-disabled="true">
               {% if step == 4 %}
                 > Step 4 <
               {% else %}
@@ -68,8 +68,9 @@
               </div>
           </div>
       </div>
-  </div>
-    {% block 'content' %}{% endblock  %}
+    <div>
+      {% block 'content' %}{% endblock  %}
+    </div>
   </div>
 
   <!-- Bootstrap JS -->

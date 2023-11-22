@@ -3,14 +3,15 @@
 
 {% block 'title' %} Exercise | Step {{step}}{% endblock  %}
 {% block 'style' %}
+    <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/exercise.css' %}">
 {% endblock  %}
 
 {% block 'content' %}
     <!-- Header -->
-    <div class="row py-3">
-        <div class="col-12">
-            <h2 class='text-center'>Запоминаем</h2>
+    <div class="row py-3 justify-content-center">
+        <div class="col-12 title ramka-6 w-50">
+            <h2 class='title'>Запоминаем</h2>
             {% csrf_token %}
         </div>
     </div>
@@ -18,16 +19,25 @@
     <!-- Words -->
     {% for word in words %}
         <div id='word_{{word.id}}' class="row justify-content-center word {% if word.id != 1 %}hidden{% endif %}">
-            <div class="col-6 ">
-                <p class="text text-center">{{ word.word }}</p>
-                <p class="text text-center">{{ word.translate }}</p>
-                <ul>
-                    {% for sentence in word.sentences %}
-                        <li>
-                            <p class="text">{{ sentence }}</p>
-                        </li>
-                    {% endfor %}
-                </ul>
+            <div class="col-6">
+                <div class="word-main-mask">
+                    <p class="text w-50 mx-auto text-center word-main">{{ word.word }}  {{ word.translate }}</p>
+                </div>
+                <div class='word-card'>
+                    <div class="row">
+                        <div class="col my-auto text-start"><ul>
+                            {% for sentence in word.sentences %}
+                                <li>
+                                    <p class="text">{{ sentence }}</p>
+                                </li>
+                            {% endfor %}
+                        </ul></div>
+                        <div class="col text-end">
+                            <img src="http://placehold.it/200x250/2c3e50/3498db&text=Photo" class="bd-placeholder-img" alt="Word Image">
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     {% endfor %}

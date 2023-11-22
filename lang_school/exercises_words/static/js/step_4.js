@@ -46,10 +46,10 @@ function update_paginator_by_number(number) {
     })
     words.forEach(el => {
         if (el.id == `word_check_${number}`){
-            el.classList.remove('hidden');
+            el.parentElement.classList.remove('hidden');
         }
         else {
-            el.classList.add('hidden')
+            el.parentElement.classList.add('hidden')
         }
     })
 }
@@ -75,10 +75,10 @@ function paginator_handler(event) {
     }
     words.forEach(el => {
         if (el.id == `word_check_${curr_word}`){
-            el.classList.remove('hidden');
+            el.parentElement.classList.remove('hidden');
         }
         else {
-            el.classList.add('hidden')
+            el.parentElement.classList.add('hidden')
         }
     })
     alertsHide();
@@ -89,7 +89,9 @@ function checkAnswer() {
     let word = document.getElementById(`word_check_${curr_page}`);
     let user_input = String(word.children[1].value).toLowerCase();
     let translate = String(word.children[1].id).toLowerCase();
+    console.log(user_input + '' + translate)
     if (user_input == translate) {
+        console.log('Правильно!')
         alert_success.classList.remove('hidden');
         alert_danger.classList.add('hidden');
         check_words[word.id] = true;
@@ -99,9 +101,8 @@ function checkAnswer() {
         alert_danger.classList.remove('hidden');
     }
     let check = check_all_words_true();
-    console.dir(check)
     if (check) {
-        done_btn.classList.remove('hidden')
+        done_btn.parentElement.parentElement.classList.remove('hidden')
         document.getElementById('step_4').classList.remove('bg-warning', 'active');
         document.getElementById('step_4').classList.add('bg-success');
         document.getElementById('alert-done').classList.remove('hidden');
@@ -151,7 +152,7 @@ next_btn.onclick = (event) => {next_paginator_handler(event)};
 
 
 /* On start */
-document.getElementById('word_check_1').classList.remove('hidden');
+document.getElementById('word_check_1').parentElement.classList.remove('hidden');
 document.getElementById('page_1').classList.add('active', 'watched');
 document.getElementById('step_1').classList.add('bg-success', 'text-light');
 document.getElementById('step_2').classList.add('bg-success', 'text-light');

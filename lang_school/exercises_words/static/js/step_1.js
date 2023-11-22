@@ -94,10 +94,10 @@ function checkAllPagesWatched() {
     })
 
     if (result == true) {
-        document.getElementById('step_1').classList.remove('bg-warning', 'active')
-        document.getElementById('step_1').classList.add('bg-success')
-        document.getElementById('step_2').classList.remove('disabled')
-        document.getElementById('step_2').classList.add('bg-warning', 'bg-gradient', 'active', 'fw-bold')
+        document.getElementById('step_1').classList.remove('active', 'step-active')
+        document.getElementById('step_1').classList.add('step-complete')
+        document.getElementById('step_2').classList.remove('step-future', 'disabled')
+        document.getElementById('step_2').classList.add('step-active', 'active', 'fw-bold', 'ramka-5')
         document.getElementById('main-alert').classList.remove('hidden')
     }
 }

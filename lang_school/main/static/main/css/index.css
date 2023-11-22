@@ -24,7 +24,6 @@ a {
 .preview-header {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border: var(--color-brown-dark) solid 10px;
-    border-radius: 20px;
 }
 
 .preview-header-text-main {

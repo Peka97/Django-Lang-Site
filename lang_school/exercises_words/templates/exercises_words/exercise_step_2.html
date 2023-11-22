@@ -8,14 +8,14 @@
 
 {% block 'content' %}
     <!-- Header -->
-    <div class="row py-3">
-        <div class="col">
-            <h2 class='text-center'>Переводим</h2>
+    <div class="row py-3 justify-content-center">
+        <div class="col-12 title ramka-6 w-50">
+            <h2 class='title'>Переводим</h2>
             {% csrf_token %}
-            <div class='row justify-content-center'>
-                <div class='col text-center'>
-                    <button id='btn-send' type='submit' class='btn btn-warning hidden'>Закончить этап и отправить данные</button>
-                </div>
+        </div>
+        <div class='row justify-content-center'>
+            <div class='col text-center'>
+                <button id='btn-send' type='submit' class='btn btn-warning hidden'>Закончить этап и отправить данные</button>
             </div>
         </div>
     </div>
@@ -24,11 +24,11 @@
     {% for word in words %}
         <div id='word_check_{{word.id}}' class="row row-cols-1 justify-content-center word {% if word.id != 1 %}hidden{% endif %}">
             <div class="col">
-                <p class="text text-center fw-bold">{{ word.word }}</p>
+                <p class="text text-center word-main">{{ word.word }}</p>
             </div>
                 {% for var in word.translate_vars %}
                 <div class="col text-center pb-1">
-                    <button type=button class='btn btn-outline-warning text-black {% if word.translate == var %}answer{% endif %}'>
+                    <button type=button class='btn word-variant text-black {% if word.translate == var %} answer {% endif %}'>
                         {{ var }}
                     </button>
                 </div>
