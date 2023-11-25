@@ -103,8 +103,8 @@ function checkAnswer() {
     let check = check_all_words_true();
     if (check) {
         done_btn.parentElement.parentElement.classList.remove('hidden')
-        document.getElementById('step_4').classList.remove('bg-warning', 'active');
-        document.getElementById('step_4').classList.add('bg-success');
+        document.getElementById('step_4').classList.remove('active');
+        document.getElementById('step_4').classList.add('step-complete');
         document.getElementById('alert-done').classList.remove('hidden');
     }
 }

@@ -21,9 +21,10 @@
           </div>
           <div class="px-3">
             <p class="lead my-3">Открыть новые возможности для коммуникации, обогатить знания о других культурах, помочь лучше понять наш мир - всё это и не только помогает изучение нового для вас языка!</p>
-            <button class="btn mb-5 text-end">
+            {% comment %} <button class="btn mb-5 text-end">
               <a href="portfolio" class="px-5">Подробнее</a>
-            </button>
+            </button> {% endcomment %}
+            <a class="btn mb-5 text-end" href="{% url 'spanish' %}" role="button">Подробнее</a>
           </div>
         </div>
       </div> 
@@ -38,7 +39,7 @@
     <div class='container py-2'>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col-xl-4 col-md-12">
-          <div class="card d-flex flex-column h-100">
+          <div class="card d-flex flex-column h-100 shadow-sm">
             <img src="{% static 'main/images/english.png' %}" class="d-block w-100" alt="Third Slide Image">
             <div class="card-body d-flex flex-column justify-content-start">
               <h5 class="card-title align-self-start">English course</h5>
@@ -51,7 +52,7 @@
           </div>
         </div>
         <div class="col-xl-4 col-md-12">
-          <div class="card d-flex flex-column h-100">
+          <div class="card d-flex flex-column h-100 shadow-sm">
             <img src="{% static 'main/images/french.png' %}" class="d-block w-100" alt="Third Slide Image">
             <div class="card-body d-flex flex-column justify-content-start">
               <h5 class="card-title align-self-start">French course</h5>
@@ -64,7 +65,7 @@
           </div>
         </div>
         <div class="col-xl-4 col-md-12">
-          <div class="card d-flex flex-column h-100">
+          <div class="card d-flex flex-column h-100 shadow-sm">
             <img src="{% static 'main/images/spanish.png' %}" class="d-block w-100" alt="Third Slide Image">
             <div class="card-body d-flex flex-column justify-content-start">
               <h5 class="card-title align-self-start">Spanish course</h5>
@@ -85,36 +86,30 @@
     <h2 class="featurette-heading pb-3 fw-normal lh-1 text-center">Блог</h2>
     <div class="row mb-2">
       <div class="col-md-6 align-self-right">
-        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-100 position-relative blog-card">
           <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-primary-emphasis">World</strong>
+            <strong class="d-inline-block mb-2 text-primary-emphasis blog-theme">World</strong>
             <h3 class="mb-0">Featured post</h3>
-            <div class="mb-1 text-body-secondary">Nov 12</div>
-            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-              Continue reading
-              <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
-            </a>
+            <div class="mb-1 text-body-secondary blog-date">Nov 12</div>
+            <p class="card-text mb-auto">{% lorem 1 b random %}</p>
+            <a class="blog-link" href="#" role="button">Continue reading</a>
           </div>
-          <div class="col-auto d-none d-lg-block">
+          <div class="col-auto p-4 d-none d-lg-block m-auto">
             <img src="http://placehold.it/400x500/2c3e50/3498db&text=Photo" class="bd-placeholder-img" width="200" height="250" alt="Third Slide Image">
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col-md-6 align-self-right">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-100 position-relative blog-card">
           <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-success-emphasis">Design</strong>
-            <h3 class="mb-0">Post title</h3>
-            <div class="mb-1 text-body-secondary">Nov 11</div>
-            <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-              Continue reading
-              <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
-            </a>
+            <strong class="d-inline-block mb-2 text-primary-emphasis blog-theme">World</strong>
+            <h3 class="mb-0">Featured post</h3>
+            <div class="mb-1 text-body-secondary blog-date">Nov 12</div>
+            <p class="card-text mb-auto">{% lorem 1 b random %}</p>
+            <a class="blog-link" href="#" role="button">Continue reading</a>
           </div>
-          <div class="col-auto d-none d-lg-block">
-            <img src="http://placehold.it/400x500/2c3e50/3498db&text=Photo" class="bd-placeholder-img" width="200" height="250" alt="Third Slide Image">
+          <div class="col-auto p-4 d-none d-lg-block m-auto">
+            <img src="http://placehold.it/400x500/2c3e50/3498db&text=Photo" class="blog-link bd-placeholder-img" width="200" height="250" alt="Third Slide Image">
           </div>
         </div>
       </div>
@@ -125,45 +120,21 @@
   <div class="container reviews-container">
     <h2 class="featurette-heading py-3 fw-normal lh-1 text-center">Ваши отзывы</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-      <div class="review-card-not-even col-xl-4 col-md-12">
-        <div class="d-flex flex-column">
-          <div class="d-flex flex-column px-3 h-100 align-items-center justify-content-center">
-            <img src="http://placehold.it/300x300/2c3e50/3498db&text=Photo" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Third Slide Image">
-            <p>
-              <h2 class="fw-normal">User #1</h2>
-              <small class="text-body-secondary">С нами 3 месяца</small>
-            </p>
-            <hr class='w-100'>
-            <p>{% lorem 1 b random %}</p>
+      {% for review in reviews  %}
+        <div class="review-card-not-even col-xl-4 col-md-12">
+          <div class="d-flex flex-column">
+            <div class="d-flex flex-column p-4 h-100 align-items-center justify-content-center review-card">
+              <img src="http://placehold.it/300x300/2c3e50/3498db&text=Photo" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Third Slide Image">
+              <p>
+                <h2 class="fw-normal">{{ review.from_user.first_name }}</h2>
+                <small class="text-body-secondary">{{review.date}}</small>
+              </p>
+              <hr class='review-hr w-100'>
+              <p class='review-text'>{{review.text }}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="review-card-even col-xl-4 col-md-12">
-        <div class="d-flex flex-column">
-          <div class="d-flex flex-column h-100 align-items-center justify-content-center">
-            <img src="http://placehold.it/300x300/2c3e50/3498db&text=Photo" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Third Slide Image">
-            <p>
-              <h2 class="fw-normal">User #2</h2>
-              <small class="text-body-secondary">С нами 3 месяца</small>
-            </p>
-            <hr class='w-100'>
-            <p>{% lorem 1 b random %}</p>
-          </div>
-        </div>
-      </div>
-      <div class="review-card-not-even col-xl-4 col-md-12">
-        <div class="d-flex flex-column">
-          <div class="d-flex flex-column px-3 h-100 align-items-center justify-content-center">
-            <img src="http://placehold.it/300x300/2c3e50/3498db&text=Photo" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Third Slide Image">
-            <p>
-              <h2 class="fw-normal">User #3</h2>
-              <small class="text-body-secondary">С нами 3 месяца</small>
-            </p>
-            <hr class='w-100'>
-            <p>{% lorem 1 b random %}</p>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 

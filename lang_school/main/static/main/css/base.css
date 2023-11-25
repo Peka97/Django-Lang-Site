@@ -8,10 +8,29 @@
     --color-brown-dark: #693909;
     --color-brown-darker: #371805;
 
+    /* Exersices */
+    /* --color-ex-violet-main: #8106A9;
+    --color-ex-violet-dark: #68237F;
+    --color-ex-violet-darker: #54026E;
+    --color-ex-violet-pale: #AF3BD4;
+    --color-ex-violet-paler: #B964D4;
+    --color-ex-violet-max-pale: #D9A6EA; */
+
+    --color-ex-violet-main: #A17DD0;
+    --color-ex-violet-dark: #816D9C;
+    --color-ex-violet-darker: #512987;
+    --color-ex-violet-pale: #C0A2E8;
+    --color-ex-violet-paler: #CBB5E8;
+    --color-ex-violet-max-pale: #F2F0F1;
     
+    --color-violet-pastel-main: #B299D3;
+    --color-violet-pastel-dark: #8C7E9E;
+    --color-violet-pastel-darker: #573289;
+    --color-violet-pastel-pale: #CEB9E9;
+    --color-violet-pastel-paler: #D5C6E9;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: var(--color-white-warm);
+    background-color: white;
 }

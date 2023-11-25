@@ -1,6 +1,6 @@
 nav {
-    background-color: var(--color-brown-dark);
-    border-bottom: 1px solid var(--color-brown-darker);
+    background-color: var(--color-ex-violet-dark);
+    border-bottom: 1px solid var(--color-ex-violet-darker);
 }
 
 .nav-link {
@@ -9,21 +9,21 @@ nav {
 }
 
 .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
-    color: var(--color-white-warm);
+    color: var(--color-ex-violet-paler);
 }
 
 .nav-link:hover {
-    color: var(--color-brown-paler);
+    color: var(--color-ex-violet-max-pale);
 }
 
 .dropdown-menu {
-    border-color: var(--color-brown-darker);
-    background-color: var(--color-brown);}
+    border-color: var(--color-ex-violet-dark);
+    background-color: var(--color-ex-violet-pale);}
 
 .dropdown-item {
     color: white;
 }
 
 .dropdown-item:hover {
-    background-color: var(--color-brown-pale);
+    background-color: var(--color-ex-violet-max-pale);
 }

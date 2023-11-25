@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'users',
     'event_calendar',
     'exercises_words',
+    'courses',
 ]
 
 # SITE_ID = 1

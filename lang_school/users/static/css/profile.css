@@ -7,57 +7,63 @@
     --color-creme: #eec8a5;
     --color-brown-dark: #693909;
     --color-brown-darker: #371805;
-}
 
-/* body {
-    background-color: white;
-} */
+    /* Exersices */
+    --color-ex-violet-main: #8106A9;
+    --color-ex-violet-dark: #68237F;
+    --color-ex-violet-darker: #54026E;
+    --color-ex-violet-pale: #AF3BD4;
+    --color-ex-violet-paler: #B964D4;
+    --color-ex-violet-max-pale: #D9A6EA; 
+}
 
 div.page {
-    background-color: var(--color-white-warm);
+    background-color: white;
+}
+
+/* Навигация */
+.profile-nav-tabs {
+    background-color: var(--color-ex-violet-pale);
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 1px;
+}
+
+.profile-nav-item {
+    margin-right: 5px;
+    background-color: var(--color-ex-violet-main) !important;
+    border-radius: 5px;
+}
+
+.profile-nav-link {
+}
+
+.profile-nav-link:hover {
+    color: var(--color-ex-violet-darker);
+    background-color: var(--color-ex-violet-max-pale);
+    border-color: white;
+    border-width: 1px;
+    border-bottom: none;
+    /* border-radius: 5px; */
+}
+
+.profile-nav-link.active {
+    color: var(--color-ex-violet-darker) !important;
+    background-color: white !important;
+    border-color: white !important;
+    border-width: 3px;
+    border-bottom: none;
+    /* border-radius: 5px; */
 }
 
 
-li.profile-nav-item {
-    background-color: var(--color-brown);
-    color: white;
-    border-color: var(--color-brown-darker);
-}
-
-.nav-tabs .nav-link.active {
-    color: white;
-    background-color: var(--color-brown-darker);
-    border-color: var(--color-brown);
-}
-
-.nav-tabs:hover .nav-link.active:hover {
-    color: white;
-    background-color: var(--color-brown-darker);
-    border-color: none;
-}
-
-.nav-tabs:hover .nav-link.disabled-nav-item:hover {
-    background-color: var(--color-brown);
-    color: white;
-    border-color: var(--color-brown-darker);
-}
-
-.nav-tabs:hover .nav-link:hover {
-    background-color: var(--color-brown-pale);
-    color: black;
-    border-color: var(--color-brown-darker);
-}
-
-li.profile-nav-item:hover {
-    background-color: var(--color-brown-pale);
-    color: black;
-    border-color: var(--color-brown-darker);
-}
 
 h4.notification-title {
     color: white;
 }
 
+
+/* Уведомления */
 div.notifications {
     background-color: var(--color-brown-dark);
 }

@@ -9,7 +9,7 @@
 
 {% block 'content' %}
     <!-- Header -->
-    <div class="row py-3 justify-content-center">
+    <div class="row justify-content-center">
         <div class="col-12 title ramka-6 w-50">
             <h2 class='title'>Запоминаем</h2>
             {% csrf_token %}
@@ -18,10 +18,16 @@
 
     <!-- Words -->
     {% for word in words %}
-        <div id='word_{{word.id}}' class="row justify-content-center word {% if word.id != 1 %}hidden{% endif %}">
-            <div class="col-6">
-                <div class="word-main-mask">
-                    <p class="text w-50 mx-auto text-center word-main">{{ word.word }}  {{ word.translate }}</p>
+        <div id='word_{{word.id}}' class="row justify-content-center word__block {% if word.id != 1 %}hidden{% endif %}">
+            <div class="col">
+                <div class="row justify-content-center words word-main-mask">
+                    <div class="col-3 word_word__col">
+                        <p class="word step_one__word_word">{{word.word}}</p>
+                    </div>
+                    <div class="col-3 word_translate__col">
+                        <p class="word step_one__word_translate">{{word.translate}}</p>
+                    </div>
+                    <!-- <p class="text w-50 mx-auto text-center word-main">{{ word.word }}  {{ word.translate }}</p> -->
                 </div>
                 <div class='word-card'>
                     <div class="row">

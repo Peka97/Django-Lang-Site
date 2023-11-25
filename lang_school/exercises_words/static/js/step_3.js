@@ -76,9 +76,9 @@ function checkAnswer() {
         alert_danger.classList.add('hidden')
         alert_success.classList.remove('hidden')
         document.getElementById('step_3').classList.remove('bg-warning', 'active')
-        document.getElementById('step_3').classList.add('bg-success')
+        document.getElementById('step_3').classList.add('step-complete')
         document.getElementById('step_4').classList.remove('disabled')
-        document.getElementById('step_4').classList.add('bg-warning', 'bg-gradient', 'active', 'fw-bold')
+        document.getElementById('step_4').classList.add('step-active', 'active', 'ramka-5')
         document.getElementById('main-alert').classList.remove('hidden')
     }
     else {

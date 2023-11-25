@@ -97,14 +97,14 @@ function checkAllPagesWatched() {
         document.getElementById('step_1').classList.remove('active', 'step-active')
         document.getElementById('step_1').classList.add('step-complete')
         document.getElementById('step_2').classList.remove('step-future', 'disabled')
-        document.getElementById('step_2').classList.add('step-active', 'active', 'fw-bold', 'ramka-5')
+        document.getElementById('step_2').classList.add('step-active', 'active', 'ramka-5')
         document.getElementById('main-alert').classList.remove('hidden')
     }
 }
 
 document.getElementById('page_1').classList.add('active', 'watched')
 
-let words = Array.from(document.getElementsByClassName('word'))
+let words = Array.from(document.getElementsByClassName('word__block'))
 let paginator = Array.from(document.getElementsByClassName('pagination'))
 let pages = Array.from(paginator[0].children).slice(1, -1)
 const max_page = Number(Array.from(paginator[0].children).slice(-2)[0].id.split('_')[1])

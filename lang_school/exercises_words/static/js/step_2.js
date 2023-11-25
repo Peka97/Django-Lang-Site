@@ -11,9 +11,9 @@ function prevPaginatorHandler(event) {
         else {
             prev_btn.classList.remove('disabled')
         }
-        pages[new_page - 1].classList.add('watched');
+        // pages[new_page - 1].classList.add('watched');
         updatePaginatorByNumber(new_page);
-        checkAllPagesWatched();
+        // checkAllPagesWatched();
     }
 }
 
@@ -29,9 +29,9 @@ function nextPaginatorHandler(event) {
         else {
             next_btn.classList.remove('disabled')
         }
-        pages[new_page - 1].classList.add('watched');
+        // pages[new_page - 1].classList.add('watched');
         updatePaginatorByNumber(new_page);
-        checkAllPagesWatched();
+        // checkAllPagesWatched();
     }   
 }
 
@@ -59,8 +59,8 @@ function paginatorHandler(event) {
     pages.forEach(el => {
         el.classList.remove('active');
     })
-    event.target.parentElement.classList.add('active', 'watched');
-    checkAllPagesWatched();
+    event.target.parentElement.classList.add('active');
+    // checkAllPagesWatched();
     let curr_word = Number(String(event.target.parentElement.id).split('_')[1]);
     if (curr_word == 1 ) {
         prev_btn.classList.add('disabled')
@@ -93,8 +93,13 @@ function wordCheckHandlers() {
         let flag = Array.from(btn.classList).includes('answer')
         btn.onclick = (event) => {
             if (flag) {
+                let page_obj = document.getElementById(`page_${curr_page}`)
+                
                 alert_danger.classList.add('hidden')
                 alert_success.classList.remove('hidden')
+                page_obj.classList.add('watched');
+
+                checkAllPagesWatched();
             }
             else {
                 alert_danger.classList.remove('hidden')
@@ -114,9 +119,9 @@ function checkAllPagesWatched() {
 
     if (result == true) {
         document.getElementById('step_2').classList.remove('bg-warning', 'active')
-        document.getElementById('step_2').classList.add('bg-success')
+        document.getElementById('step_2').classList.add('step-complete')
         document.getElementById('step_3').classList.remove('disabled')
-        document.getElementById('step_3').classList.add('bg-warning', 'bg-gradient', 'active', 'fw-bold')
+        document.getElementById('step_3').classList.add('active', 'step_active', 'ramka-5')
         document.getElementById('main-alert').classList.remove('hidden')
     }
 }
@@ -186,7 +191,7 @@ next_step.onclick = (event) => {
 
 /* On start */
 document.getElementById('page_1').classList.add('active', 'watched');
-document.getElementById('step_1').classList.add('bg-success', 'text-light')
+document.getElementById('step_1').classList.add('step-complete', 'text-light')
 wordCheckHandlers();
 
 

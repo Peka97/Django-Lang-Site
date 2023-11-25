@@ -1,8 +1,21 @@
+from random import shuffle
+import datetime as dt
+
 from django.shortcuts import render
+
+from courses.models import Review
 
 
 def index(request):
-    return render(request, 'main/index.html')
+    reviews = list(Review.objects.all())
+    shuffle(reviews)
+    reviews = reviews[:3]
+    
+    for review in reviews:
+        review.date = f'{review.datetime.day}.{review.datetime.month}.{review.datetime.year}'
+        
+    context = {'reviews': reviews}
+    return render(request, 'main/index.html', context)
 
 
 def english_course(request):
