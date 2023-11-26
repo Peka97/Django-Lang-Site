@@ -187,8 +187,7 @@ li {
 
 .word__item {
   width: 150px;
-  /* margin-right: 50px; */
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   padding: 15px;
   text-align: center;
   border: 2px solid var(--color-ex-violet-dark);
@@ -198,10 +197,14 @@ li {
   transition: background-color 0.5s;
 }
 
+.word__word {
+  margin-bottom: 0px;
+}
+
 .translate__item {
   width: 150px;
-  margin-bottom: 10px;
   padding: 15px;
+  margin-bottom: 15px;
   text-align: center;
   border: 2px solid var(--color-ex-violet-main);
   border-radius: 10px;
@@ -211,6 +214,17 @@ li {
   transition: background-color 0.5s;
 }
 
+.translate__item:hover {
+  transform: scale(1.1);
+}
+
+.translate__item:active {
+  transform: scale(1);
+}
+
+.translate__word {
+  margin-bottom: 0px;
+}
 /* .translate__item:last-child {
   margin-bottom: 0;
 } */

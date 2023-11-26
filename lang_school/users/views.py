@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.contrib.auth.views import PasswordResetView, PasswordResetCompleteView
 
+from courses.models import Project
 from exercises_words.models import Exercise
 from event_calendar.models import EventModel
 from users.forms import RegistrationUserForm, CustomPasswordResetForm
@@ -79,6 +80,7 @@ def user_profile(request):
             student=user_login
         ).all())
         exercises = []
+
         for ex in exercises_from_db:
             if ex.id not in exercises:
                 exercises.append(ex.id)
@@ -87,8 +89,10 @@ def user_profile(request):
             student=user_login).order_by('datetime').all()
         )
         calendar = get_calendar(lessons)
+        projects = get_projects(user)
 
         context = {
+            'projects': projects,
             'exercises': exercises,
             'events': lessons,
             'events_count_done': len([lesson for lesson in lessons if lesson.status == 'D']),
@@ -147,7 +151,7 @@ def get_calendar(lessons: list[dict]):
     return result
 
 
-def get_teacher_lessons(user):
+def get_teacher_lessons(user: User):
     lessons = []
     lesson_template = {
         'pk': 0,
@@ -186,6 +190,11 @@ def get_teacher_lessons(user):
 
     lessons.sort(key=lambda x: x['datetime'])
     return lessons
+
+
+def get_projects(user: User):
+    projects = Project.objects.filter(student=user).all()
+    return projects if projects else None
 
 
 class CustomPasswordResetView(PasswordResetView):

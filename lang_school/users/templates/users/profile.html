@@ -197,6 +197,16 @@
 					<hr class='border-black border-2'>
 					<div class='row row-cols-auto text-black'>
 						<div class='col align-self-center'>
+							<p> Активные проекты: </p>
+						</div>
+						{% for project in projects %}
+							<div class='col align-self-center'>
+								<p> {{ project.course_name }} </p>
+							</div>
+						{% endfor %}
+					</div>
+					<div class='row row-cols-auto text-black'>
+						<div class='col align-self-center'>
 							<p> Количество проведенных занятий: </p>
 						</div>
 						<div class='col align-self-center'>

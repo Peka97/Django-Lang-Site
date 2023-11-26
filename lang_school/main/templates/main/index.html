@@ -47,7 +47,7 @@
             </div>
             <div class="card-footer d-flex justify-content-between align-items-center">
               <span>95 учеников</span>
-              <a class="btn" href="{% url 'english' %}" role="button">Перейти к курсу</a>
+              <a class="btn" href="{% url 'english' %}" role="button">Записаться</a>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@
             </div>
             <div class="card-footer d-flex justify-content-between align-items-center">
               <span>66 учеников</span>
-              <a class="btn" href="{% url 'french' %}" role="button">Перейти к курсу</a>
+              <a class="btn" href="{% url 'french' %}" role="button">Записаться</a>
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@
             </div>
             <div class="card-footer d-flex justify-content-between align-items-center">
               <span>30 учеников</span>
-              <a class="btn" href="{% url 'spanish' %}" role="button">Перейти к курсу</a>
+              <a class="btn" href="{% url 'spanish' %}" role="button">Записаться</a>
             </div>
           </div>
         </div>
@@ -92,10 +92,10 @@
             <h3 class="mb-0">Featured post</h3>
             <div class="mb-1 text-body-secondary blog-date">Nov 12</div>
             <p class="card-text mb-auto">{% lorem 1 b random %}</p>
-            <a class="blog-link" href="#" role="button">Continue reading</a>
+            <a class="blog-link btn" href="#" role="button">Continue reading</a>
           </div>
           <div class="col-auto p-4 d-none d-lg-block m-auto">
-            <img src="http://placehold.it/400x500/2c3e50/3498db&text=Photo" class="bd-placeholder-img" width="200" height="250" alt="Third Slide Image">
+            <img src="http://placehold.it/400x500/2c3e50/3498db&text=No Photo" class="bd-placeholder-img" width="200" height="250" alt="Third Slide Image">
           </div>
         </div>
       </div>
@@ -106,10 +106,10 @@
             <h3 class="mb-0">Featured post</h3>
             <div class="mb-1 text-body-secondary blog-date">Nov 12</div>
             <p class="card-text mb-auto">{% lorem 1 b random %}</p>
-            <a class="blog-link" href="#" role="button">Continue reading</a>
+            <a class="blog-link btn" href="#" role="button">Continue reading</a>
           </div>
           <div class="col-auto p-4 d-none d-lg-block m-auto">
-            <img src="http://placehold.it/400x500/2c3e50/3498db&text=Photo" class="blog-link bd-placeholder-img" width="200" height="250" alt="Third Slide Image">
+            <img src="http://placehold.it/400x500/2c3e50/3498db&text=No Photo" class="blog-link bd-placeholder-img" width="200" height="250" alt="Third Slide Image">
           </div>
         </div>
       </div>
@@ -124,9 +124,10 @@
         <div class="review-card-not-even col-xl-4 col-md-12">
           <div class="d-flex flex-column">
             <div class="d-flex flex-column p-4 h-100 align-items-center justify-content-center review-card">
-              <img src="http://placehold.it/300x300/2c3e50/3498db&text=Photo" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Third Slide Image">
+              <img src="http://placehold.it/300x300/2c3e50/3498db&text=No Photo" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Third Slide Image">
               <p>
                 <h2 class="fw-normal">{{ review.from_user.first_name }}</h2>
+                <small class="text-body-secondary">{{review.course_name}}</small>
                 <small class="text-body-secondary">{{review.date}}</small>
               </p>
               <hr class='review-hr w-100'>

@@ -36,8 +36,15 @@
       {% if user.is_authenticated %}
         <div class="dropdown pt-2">
           <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class='px-2 text-light'>{{ user.last_name }} {{ user.first_name }}</span>
-            <img src="http://placehold.it/400x500/2c3e50/3498db&text=User photo" alt="User photo" width="32" height="32" class="rounded-circle">
+            <span class='px-2 text-light'>
+              {% if user.first_name %}
+                {{ user.last_name }} {{ user.first_name }}
+              {% else %}
+                {{ user.username}}
+              {% endif %}
+              
+            </span>
+            <img src="http://placehold.it/400x500/2c3e50/3498db&text=No photo" alt="User photo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small shadow" style="">
             <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>

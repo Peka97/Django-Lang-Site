@@ -24,14 +24,18 @@
         <div class="col-2">
             <ul id='words-list' class='words__list'>
                 {% for word in words %}
-                    <li id='word_{{word.id}}' class="word__item"> {{ word.word }}</li>
+                    <li id='word_{{word.id}}' class="word__item">
+                        <p class="word__word"> {{ word.word }}</p>
+                        </li>
                 {% endfor %}
             </ul>
         </div>
         <div class="col-2">
             <ul id='trans-list' class="translate__list">
                 {% for trans_word in shuffled_translates %}
-                    <li id='translate_{{ trans_word.id }}' class="translate__item">{{ trans_word.trans }}</li>
+                    <li id='translate_{{ trans_word.id }}' class="translate__item">
+                        <p class="translate__word"><i class="bi bi-list"></i> {{ trans_word.trans }}</p>
+                    </li>
                 {% endfor %}
             </ul>
         </div>
