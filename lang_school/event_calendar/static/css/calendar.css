@@ -12,7 +12,7 @@
   --red: #dc3545;
   --orange: #fd7e14;
   --yellow: #ffc107;
-  --green: #28a745;
+  --green: #5BD375;
   --teal: #20c997;
   --cyan: #17a2b8;
   --white: #fff;
@@ -20,7 +20,7 @@
   --gray-dark: #343a40;
   --primary: #007bff;
   --secondary: #6c757d;
-  --success: #28a745;
+  --success: #5BD375;
   --info: #17a2b8;
   --warning: #ffc107;
   --danger: #dc3545;
@@ -8428,7 +8428,7 @@ h1, h2, h3, h4, h5,
     height: 10px;
     border-radius: 50%;
     content: '';
-    background: #28a745; }
+    background: #4AD468; }
 
 .event-date-warn {
   border-color: #7e0cf5;
@@ -8442,7 +8442,7 @@ h1, h2, h3, h4, h5,
   height: 10px;
   border-radius: 50%;
   content: '';
-  background: #fd7e14;
+  background: #FA933E;
 }
 
 .active-date {

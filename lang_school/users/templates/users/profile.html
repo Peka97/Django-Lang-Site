@@ -13,77 +13,78 @@
 
 {% block content %}
 <div class="container page">
-	<ul class="nav nav-tabs profile-nav-tabs" id="myTab" role="tablist">
-		<li class="nav-item profile-nav-item" role="presentation">
-		  <button class="nav-link active profile-nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#services-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Сервисы</button>
-		</li>
-		<li class="nav-item profile-nav-item" role="presentation">
-		  <button class="nav-link profile-nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Профиль</button>
-		</li>
-		<li class="nav-item profile-nav-item" role="presentation">
-		  <button class="nav-link profile-nav-link disabled-nav-item" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>To be continued...</button>
-		</li>
-	  </ul>
-	  <div class="tab-content" id="myTabContent">
-		<div class="tab-pane fade show active" id="services-tab-pane" role="tabpanel" aria-labelledby="services-tab" tabindex="0">
-			<!-- Services -->
-
-			<!-- Calendar -->
-			<div class="row justify-content-center">
-				<div class='body-calendar'>
-					<div class="container">
-						<div class="row justify-content-center">
-							<div class="col text-center">
-								<h2 class="heading-section">Календарь</h2>
-								<p> 🛠 Данный сервис некорректно отображается с телефонов и планшетов. Находится в работе 🛠</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-9">
-								<div class="content w-100">
-									<div class="calendar-container">
-										<div class="calendar"> 
-										<div class="year-header"> 
-											<span class="left-button fa fa-chevron-left" id="prev"> </span> 
-											<span class="year" id="label"></span> 
-											<span class="right-button fa fa-chevron-right" id="next"> </span>
-										</div> 
-										<table class="months-table w-100"> 
-											<tbody>
-											<tr class="months-row">
-												<td class="month">Jan</td> 
-												<td class="month">Feb</td> 
-												<td class="month">Mar</td> 
-												<td class="month">Apr</td> 
-												<td class="month">May</td> 
-												<td class="month">Jun</td> 
-												<td class="month">Jul</td>
-												<td class="month">Aug</td> 
-												<td class="month">Sep</td> 
-												<td class="month">Oct</td>          
-												<td class="month">Nov</td>
-												<td class="month">Dec</td>
-											</tr>
-											</tbody>
-										</table> 
-										<table class="days-table w-100"> 
-											<td class="day">Sun</td> 
-											<td class="day">Mon</td> 
-											<td class="day">Tue</td> 
-											<td class="day">Wed</td> 
-											<td class="day">Thu</td> 
-											<td class="day">Fri</td> 
-											<td class="day">Sat</td>
-										</table>
-										<div class="frame"> 
-											<table class="dates-table w-100"> 
-											<tbody class="tbody">  
-												{{ calendar | safe }}            
-											</tbody>
-											</table>
-										</div>
-									</div>
+	<div class='container-nav-profile'>
+		<ul class="nav nav-tabs profile-nav-tabs" id="myTab" role="tablist">
+			<li class="nav-item profile-nav-item" role="presentation">
+				<button class="nav-link active profile-nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#services-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Сервисы</button>
+			</li>
+			<li class="nav-item profile-nav-item" role="presentation">
+				<button class="nav-link profile-nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Профиль</button>
+			</li>
+			<li class="nav-item profile-nav-item" role="presentation">
+				<button class="nav-link profile-nav-link disabled-nav-item" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>To be continued...</button>
+			</li>
+		</ul>
+	</div>
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="services-tab-pane" role="tabpanel" aria-labelledby="services-tab" tabindex="0">
+				<!-- Services -->
+				<div class="row justify-content-center">
+					<!-- Calendar -->
+					<div class='body-calendar'>
+						<div class="container">
+							<div class="row justify-content-center">
+								<div class="col text-center">
+									<h2 class="heading-section profile__title">Календарь</h2>
 								</div>
+							</div>
+							<div class="row row-cols-2">
+								<div class="col-12 col-xl-9  calendar-col">
+									<div class="content w-100 calendar-content">
+										<div class="calendar-container">
+											<div class="calendar"> 
+												<div class="year-header"> 
+													<span class="left-button fa fa-chevron-left" id="prev"> </span> 
+													<span class="year" id="label"></span> 
+													<span class="right-button fa fa-chevron-right" id="next"> </span>
+												</div> 
+												<table class="months-table w-100"> 
+													<tbody>
+														<tr class="months-row">
+															<td class="month">Jan</td> 
+															<td class="month">Feb</td> 
+															<td class="month">Mar</td> 
+															<td class="month">Apr</td> 
+															<td class="month">May</td> 
+															<td class="month">Jun</td> 
+															<td class="month">Jul</td>
+															<td class="month">Aug</td> 
+															<td class="month">Sep</td> 
+															<td class="month">Oct</td>          
+															<td class="month">Nov</td>
+															<td class="month">Dec</td>
+														</tr>
+													</tbody>
+												</table> 
+												<table class="days-table w-100"> 
+													<td class="day">Sun</td> 
+													<td class="day">Mon</td> 
+													<td class="day">Tue</td> 
+													<td class="day">Wed</td> 
+													<td class="day">Thu</td> 
+													<td class="day">Fri</td> 
+													<td class="day">Sat</td>
+												</table>
+												<div class="frame"> 
+													<table class="dates-table w-100"> 
+														<tbody class="tbody">  
+															{{ calendar | safe }}            
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+								<!-- Events -->
 								<div class="events-container">
 									<div name='empty-card' class="event-card empty-card hidden">
 										<div class='event-name px-3'>Занятий сегодня нет</div>
@@ -154,7 +155,6 @@
 											</div>
 										{% endfor %}
 									{% endif %}
-
 								</div>
 							</div>
 						</div>
@@ -163,8 +163,13 @@
 			</div>
 		</div>
 		<div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-			<!-- User Info -->		
-			<div class="row justify-content-center bg-body-secondary">
+			<!-- User Info -->
+			<div class="row justify-content-center">
+				<div class="col text-center">
+					<h2 class="heading-section profile__title">Профиль</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
 				<div class='col-lg-auto my-3'>
 					<img src="http://placehold.it/400x500/2c3e50/3498db&text=User photo" class="bd-placeholder-img" width="200" height="250" alt="User photo">
 				</div>

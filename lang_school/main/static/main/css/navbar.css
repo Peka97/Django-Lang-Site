@@ -22,8 +22,11 @@ nav {
 
 .dropdown-item {
     color: white;
+    border: var(--color-violet-pastel-pale) solid 1px;
+
 }
 
 .dropdown-item:hover {
     background-color: var(--color-violet-pastel-max-pale);
+    border-color: var(--color-violet-pastel-dark);
 }
