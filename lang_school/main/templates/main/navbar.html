@@ -10,12 +10,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav m-auto mb-lg-0">
             <li>
-              <a href='{% url "" %}' class="nav-link px-2">Lang School Name</a>
+              <a href='{% url "" %}' class="nav-link py-0">
+                {% comment %} <span>Verbal Voyager</span> {% endcomment %}
+                <img class='logo' src="{% static 'main/images/logo.png' %}" alt="logo">
+              </a>
               {% comment %} <i class="bi bi-house-fill"></i> {% endcomment %}
               {% comment %} <img src="{% static 'main/images/logo_mini.png' %}" width="50" height="50" class="img align-self-center" alt='Photo'> {% endcomment %}
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle align-middle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Курсы
               </a>
               <ul class="dropdown-menu">

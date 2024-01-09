@@ -5,7 +5,7 @@ nav {
 
 .nav-link {
     color: white;
-    white-space: nowrap; 
+    white-space: nowrap;
 }
 
 .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
@@ -29,4 +29,17 @@ nav {
 .dropdown-item:hover {
     background-color: var(--color-violet-pastel-max-pale);
     border-color: var(--color-violet-pastel-dark);
+}
+
+.logo {
+    height: 40px;
+    width: 40px;
+    
+    transition: scale 0.5s;
+}
+
+.logo:hover {
+    border: var(--color-violet-pastel-pale) solid 1px;
+    border-radius: 50%;
+    scale: 1.1;
 }

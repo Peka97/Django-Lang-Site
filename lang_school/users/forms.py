@@ -43,10 +43,9 @@ class RegistrationUserForm(UserCreationForm):
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super(UserCreationForm, self).__init__(*args, **kwargs)
 
-        self.fields['username'].widget.attrs['class'] = 'form-control'
-        self.fields['password1'].widget.attrs['class'] = 'form-control'
-        self.fields['password2'].widget.attrs['class'] = 'form-control'
-        self.fields['email'].widget.attrs['class'] = 'form-control'
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control'
+            self.fields[field].widget.attrs['placeholder'] = field
 
 
 class CustomPasswordResetForm(PasswordResetForm):

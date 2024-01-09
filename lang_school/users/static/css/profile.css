@@ -99,6 +99,7 @@ div.page {
 }
 
 .calendar-content {
+    background-color: var(--color-blue-pastel-max-pale);
     border: var(--color-blue-pastel-dark) solid 3px;
     border-radius: 5px;
 }
@@ -108,7 +109,7 @@ div.page {
     max-height: max-content;
     min-width: fit-content;
     min-height: fit-content;
-    background-color: var(--color-violet-pastel-pale);
+    background-color: var(--color-blue-pastel-pale);
     border-right: var(--color-blue-pastel-dark) solid 3px;
     padding: auto;
 }
@@ -174,8 +175,8 @@ div.page {
     border-radius: 20%;
 }
 
-.table-date:hover {
-    transform: scale(1.1);
+.table-date:not(.nil):hover {
+    transform: scale(1.05);
     border-color: var(--color-blue-pastel-dark) !important;
 }
 
@@ -226,6 +227,14 @@ div.page {
 
 .events-container {
     overflow: hidden;
+}
+
+
+/* Профиль */
+
+.avatar {
+    max-height: 250px;
+    max-width: 200px;
 }
 
 /* Уведомления */

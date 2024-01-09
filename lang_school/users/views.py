@@ -28,8 +28,8 @@ def user_auth(request):
         if user:
             login(request, user)
             return render(request, 'main/index.html', context)
-
-        context = {'error': 'Username or password not correct'}
+        else:
+            context = {'error': 'Неправильный логин или пароль'}
 
     return render(request, 'users/auth.html', context)
 
