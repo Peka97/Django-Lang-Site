@@ -77,7 +77,8 @@ def user_profile(request):
         return render(request, 'users/teacher_profile.html', context)
     else:
         exercises_from_db = list(Exercise.objects.filter(
-            student=user_login
+            student=user_login,
+            is_active=True
         ).all())
         exercises = []
 

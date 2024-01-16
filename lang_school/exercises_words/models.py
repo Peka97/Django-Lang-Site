@@ -18,7 +18,7 @@ class Word(models.Model):
     sentences = models.TextField(max_length=255, null=True, blank=True)
 
     def __str__(self) -> str:
-        return f'{self.word} - {self.lang}'
+        return f'{self.word}'
 
     class Meta:
         verbose_name = 'Слово для изучения'
@@ -26,14 +26,24 @@ class Word(models.Model):
 
 
 class Exercise(models.Model):
-    words = models.ManyToManyField(Word)
+    words = models.ManyToManyField(Word, verbose_name="Слова")
     student = models.ForeignKey(
-        'auth.user', on_delete=models.CASCADE, related_name='exer_student', null=True)
+        'auth.user', on_delete=models.CASCADE, related_name='exer_student', null=True, verbose_name='Ученик')
     teacher = models.ForeignKey(
-        'auth.user', on_delete=models.CASCADE, related_name='exer_teacher', null=True)
+        'auth.user', on_delete=models.CASCADE, related_name='exer_teacher', null=True, verbose_name="Учитель")
+    is_active = models.BooleanField(default=True, verbose_name="Активен")
+    
+    def get_words(self):
+        words = [str(word) for word in self.words.all()]
+        return ', '.join(words)
+
+    # def get_teachers(self):
+    #     teachers = [user for user in User.objects.all() if user.groups.filter(name='Teacher').exists()]
+    #     return ' '.join(teachers)
 
     def __str__(self) -> str:
-        return f"{self.id} - {self.student}"
+        status = 'Active' if self.is_active else 'Done'
+        return f"{self.id} - {self.student.last_name} {self.student.first_name} - {status}"
 
     class Meta:
         verbose_name = 'Упражнение'
